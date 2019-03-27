@@ -1,0 +1,1 @@
+## Test project for students at Novosibirsk State Technical University masterclass 
