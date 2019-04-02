@@ -1,0 +1,86 @@
+<div class="scheme-yellow main-container">
+  <header>
+    <div class="container te-container space-between">
+      <a class="navbar-brand" href="/">
+        <span class="te-logo"></span>
+      </a>
+      <div class="col-md-3">
+        <button class="btn te-button te-blue mb-0" id="btn-open" (click)="openRegistration()" *ngIf="!isOpened && round < 4">Открыть регистрацию</button>
+
+        <button class="btn te-button te-blue mb-0" id="btn-next" *ngIf="isOpened && round < 3" (click)="nextStep()">Продолжить</button>
+        <button class="btn te-button te-blue mb-0" id="btn-next" *ngIf="isOpened && round === 3" (click)="closeGettingParticipant()">Завершить прием</button>
+
+        <button class="btn te-button te-blue mb-0 " id="btn-start" *ngIf="isLotteryStarts && !winner" (click)="startLottery()">Начать розыгрыш</button>
+
+        <button class="btn te-button te-blue mb-0" id="btn-retry" *ngIf="winner" (click)="startLottery()">Повторить розыгрыш</button>
+      </div>
+    </div>
+  </header>
+  <main id="lottery" class="container te-container col justify-content-center" *ngIf="!winner">
+    <div class="te-numbers" id="participants">{{ allParticipantNumbers ? allParticipantNumbers.join(', ') : '' }}</div>
+    <div class="te-node-container">
+      <div
+        *ngIf="round >= 1"
+        id="node-1 "
+        class="te-node"
+        [class.one]="round === 1"
+        [class.two]="round === 2"
+        [class.three]="round >= 3"
+        [ngClass]="firstNodeActive ? ' active ' : ' inactive '"
+      >
+        <div class="te-node-body">
+          <p id="number-1" *ngIf="round < 3" [class.md-font]="firstNodeValue && firstNodeValue.length > 10" [class.sm-font]="firstNodeValue && firstNodeValue.length > 15">
+            {{ firstNodeValue ? firstNodeValue.join(', ') : '' }}
+          </p>
+          <p class="te-status-numbers" id="number-1" *ngIf="round >= 3 && firstNodeStatuses">backup: {{ firstNodeStatuses.backup }}, owner: {{ firstNodeStatuses.owner }}</p>
+        </div>
+        <div class="te-node-header"><p>NODE #1</p></div>
+      </div>
+      <div *ngIf="round >= 2" id="node-2" class="te-node " [class.two]="round === 2" [class.three]="round >= 3" [ngClass]="secondNodeActive ? ' active ' : ' inactive '">
+        <div class="te-node-body">
+          <p id="number-2" *ngIf="round < 3" [class.md-font]="secondNodeValue && secondNodeValue.length > 10" [class.sm-font]="secondNodeValue && secondNodeValue.length > 15">
+            {{ secondNodeValue ? secondNodeValue.join(', ') : '' }}
+          </p>
+          <p class="te-status-numbers" id="number-2" *ngIf="round >= 3 && secondNodeStatuses">backup: {{ secondNodeStatuses.backup }}, owner: {{ secondNodeStatuses.owner }}</p>
+        </div>
+        <div class="te-node-header"><p>NODE #2</p></div>
+      </div>
+      <div id="node-3" class="te-node " *ngIf="round >= 3" [class.three]="round >= 3" [ngClass]="thirdNodeActive ? ' active ' : ' inactive '">
+        <div class="te-node-body">
+          <p id="number-3" *ngIf="round < 3" [class.md-font]="thirdNodeValue && thirdNodeValue.length > 10" [class.sm-font]="thirdNodeValue && thirdNodeValue.length > 15">
+            {{ thirdNodeValue ? thirdNodeValue.join(', ') : '' }}
+          </p>
+          <p class="te-status-numbers" id="number-3" *ngIf="round >= 3 && thirdNodeStatuses">backup: {{ thirdNodeStatuses.backup }}, owner: {{ thirdNodeStatuses.owner }}</p>
+        </div>
+        <div class="te-node-header"><p>NODE #3</p></div>
+      </div>
+    </div>
+    <div class="te-hazelcast" id="hazelcast" [class.active]="round >= 3">
+      <div class="te-hc-img"></div>
+      <div class="te-hc-img"></div>
+    </div>
+  </main>
+  <main id="winner" class="container te-container col justify-content-center" *ngIf="winner">
+    <p class="te-h2">Победитель:</p>
+    <h1 class="te-winner-number" id="winner-number">{{ winner }}</h1>
+    <p class="te-h2">В розыгрыше участвовали:</p>
+    <p class="col-8 te-all-numbers" id="all-numbers">
+      {{ allParticipantNumbers ? allParticipantNumbers.join(', ') : '' }}
+    </p>
+  </main>
+  <footer class="footer">
+    <div class="container te-container space-between" *ngIf="firstNodeValue && round < 3">
+      <div class="te-arrow-container">
+        <div id="arrows" class="te-arrow one" *ngIf="round === 1"></div>
+        <div id="arrows" class="te-arrow two" *ngIf="round === 2"></div>
+        <!-- <div id="arrows" class="te-arrow three" *ngIf="round === 3 && firstNodeValue && secondNodeValue && thirdNodeValue"></div> -->
+      </div>
+    </div>
+    <div class="container te-container space-between" *ngIf="round === 3">
+      <div class="te-arrow-container">
+        <div id="arrows" class="te-arrow three"></div>
+      </div>
+    </div>
+  </footer>
+  <button *ngIf="dev" class="absolute" (click)="resetAll()">resetAll</button>
+</div>

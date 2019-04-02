@@ -1,0 +1,502 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-Regular.ttf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-Medium.ttf) format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-Bold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-ExtraBold.ttf) format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url(/dist/fonts/Raleway-Black.ttf) format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+body * {
+  font-family: 'Raleway', sans-serif;
+}
+main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.footer {
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 auto;
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.footer span,
+.footer span * {
+  height: 20px;
+  width: 299px;
+  color: rgba(0, 0, 0, 0.5);
+
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: right;
+}
+.te-container {
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+}
+.col {
+  flex-direction: column;
+}
+.row {
+  flex-direction: row;
+}
+.hidden {
+  display: none !important;
+}
+.space-between {
+  justify-content: space-between;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.te-logo {
+  display: flex;
+  height: 30px;
+  width: 196px;
+}
+.te-header-link {
+  display: flex;
+  flex-direction: row;
+}
+.te-h2 {
+  color: #000000;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 43px;
+  text-align: center;
+}
+.te-winner-number {
+  color: #000000;
+  font-size: 360px;
+  font-weight: 900;
+  letter-spacing: -15px;
+  line-height: 360px;
+  text-align: center;
+}
+.te-all-numbers {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 29px;
+  text-align: center;
+}
+.scheme-yellow {
+  background-color: rgb(255, 217, 3);
+  background-image: url(/dist/images/png/pattern.png);
+  background-position: center;
+  background-size: cover;
+
+  min-height: 100vh;
+}
+.scheme-yellow header .te-logo {
+  background-size: contain;
+  background-image: url(/dist/images/png/true_logo.png);
+  background-repeat: no-repeat;
+}
+.scheme-white {
+  background-color: #ffffff;
+
+  min-height: 100vh;
+}
+.scheme-yellow header,
+.scheme-white header {
+  background-color: transparent;
+  display: flex;
+  flex: 0 0 auto;
+  height: 71px;
+}
+.scheme-white header .te-logo {
+  background-size: contain;
+  background-image: url(/dist/images/png/true_logo2.png);
+}
+h1.te-nsu-h1 {
+  color: #000000;
+
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 56px;
+}
+.te-lottery-number {
+  color: #000000;
+  font-size: 164px;
+  font-weight: 700;
+  line-height: 164px;
+  text-align: center;
+}
+.te-navbar {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  align-items: baseline;
+  margin: 0;
+}
+.te-navbar li form button,
+.te-navbar li a {
+  height: 20px;
+  color: #000000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: right;
+  padding: 8px 0 8px 20px;
+  margin: 0;
+}
+
+.te-nsu-enter-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.te-nsu-reg {
+  display: flex;
+  flex-direction: column;
+}
+.te-nsu-illustration {
+  position: absolute;
+  height: 620px;
+  width: 960px;
+  top: 25%;
+  background-repeat: no-repeat;
+  right: 0;
+  background-position: right;
+  background-size: contain;
+  background-image: url(/dist/images/png/illustration.png);
+}
+.te-nsu-reg .te-nsu-list {
+  padding-top: 36px;
+}
+.te-nsu-reg .te-nsu-list p {
+  color: #000000;
+  font-size: 17px;
+  line-height: 28px;
+  margin-bottom: 20px;
+  padding-left: 50px;
+  position: relative;
+}
+.te-nsu-reg .te-nsu-list p:before {
+  display: block;
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+  height: 29px;
+  width: 29px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  color: #000000;
+
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 29px;
+  text-align: center;
+}
+.te-nsu-reg .te-nsu-list p:nth-child(1):before {
+  content: '1';
+}
+.te-nsu-reg .te-nsu-list p:nth-child(2):before {
+  content: '2';
+}
+.te-nsu-reg .te-nsu-list p:nth-child(3):before {
+  content: '3';
+}
+.te-nsu-reg-buttons {
+  display: flex;
+  flex-direction: column;
+  padding-top: 36px;
+}
+.te-button {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  margin-bottom: 20px;
+  padding: 13px;
+  justify-content: center;
+  border: none;
+  border-radius: 0;
+}
+.te-button.te-blue {
+  background-color: #0619ff;
+  color: #ffffff;
+}
+.te-button.te-blue:hover {
+  background-color: #2f41ff;
+  text-decoration: none;
+}
+.te-button.te-white {
+  background-color: #f1f1f1;
+  color: #000000;
+}
+.te-button.te-white:hover {
+  text-decoration: none;
+  background-color: #fff;
+}
+@media (max-width: 991.98px) {
+  .te-nsu-illustration {
+    display: none;
+  }
+}
+@media (max-width: 1360.98px) {
+  .te-nsu-illustration {
+    left: 400px;
+  }
+}
+.te-nsu-form {
+  margin: 36px 0;
+}
+
+.te-nsu-form select {
+  opacity: 0.8;
+  background-color: #eeeeee;
+  color: #6c757d;
+  font-size: 17px;
+  line-height: 24px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  border-bottom: 2px solid #eeeeee;
+}
+.te-nsu-form select:focus {
+  border: none;
+  background-color: #eeeeee;
+  border-bottom: 2px solid #0619ff;
+  box-shadow: none;
+}
+.te-input {
+  opacity: 0.8;
+  background-color: #eeeeee;
+  color: #6c757d;
+  font-size: 17px;
+  line-height: 24px;
+  padding: 25px 20px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #eeeeee;
+}
+.te-input:focus {
+  border: none;
+  background-color: #eeeeee;
+  border-bottom: 2px solid #0619ff;
+  box-shadow: none;
+}
+
+.te-node-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.te-node {
+  display: none;
+  margin: 25px;
+  flex-direction: column;
+}
+.te-node.one {
+  height: 561.78px;
+  width: 576px;
+}
+.te-node.two {
+  height: 539px;
+  width: 553px;
+}
+.te-node.three {
+  height: 359px;
+  width: 366px;
+}
+.te-node.active {
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/node.png);
+}
+.te-node.inactive {
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/broken-node.png);
+}
+.te-node .te-node-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  word-break: break-word;
+  padding: 60px;
+}
+.te-node.one .te-node-body {
+  height: 320px;
+}
+.te-node.two .te-node-body {
+  height: 310px;
+}
+.te-node.three .te-node-body {
+  height: 250px;
+}
+.te-node-body p {
+  color: #000000;
+  font-size: 52px;
+  line-height: 1.5;
+  text-align: center;
+}
+.te-node-body p.md-font {
+  font-size: 40px;
+}
+.te-node-body p.sm-font {
+  font-size: 30px;
+}
+.te-node.three .te-node-body p {
+  font-size: 24px;
+}
+.te-node .te-node-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.te-node.one .te-node-header {
+  height: 200px;
+}
+.te-node.two .te-node-header {
+  height: 200px;
+}
+.te-node.three .te-node-header {
+  height: 200px;
+}
+
+.te-node-header p {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 21px;
+  text-align: center;
+}
+.te-arrow-container {
+  display: flex;
+  width: 100%;
+}
+.te-arrow {
+  display: none;
+  height: 250px;
+  width: 100%;
+}
+.te-arrow.one {
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/arrow-1.png);
+  background-position: center;
+}
+.te-arrow.two {
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/arrow-2.png);
+  background-position: center;
+}
+.te-arrow.three {
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/arrow-3.png);
+  background-position: center;
+}
+.te-numbers {
+  min-height: 58px;
+  width: 1194px;
+  color: #000000;
+  font-family: 'Raleway';
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-align: center;
+}
+.te-hazelcast {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 1px;
+}
+.te-hazelcast.active {
+  width: 1194px;
+}
+.te-hc-img {
+  display: flex;
+  height: 100px;
+  width: 400px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/dist/images/png/HC.png);
+  background-position: center;
+}

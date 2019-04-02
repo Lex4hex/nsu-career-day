@@ -30,6 +30,11 @@ public class LotteryController {
         return lotteryService.isNodeAlive(number);
     }
 
+    @GetMapping("/winner")
+    public Integer getWinner() {
+        return lotteryService.getWinner();
+    }
+
     @GetMapping("/allClusterNumbers")
     public NumbersDto getAllNumbers() {
         return lotteryService.getAllClusterNumbers();

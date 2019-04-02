@@ -4,11 +4,14 @@ import com.lex4hex.dto.AsyncDataHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -33,19 +36,31 @@ public class RegisteredUsersService {
 
     @Async
     public void getAllRegisteredUsers() {
-        while (asyncDataHolder.getIsRegistrationInProgress().get()) {
-            Integer[] numbers =
-                    restTemplate.getForObject(registrationServiceAddress + "/getNumbers", Integer[].class);
+        HashSet<Integer> numbersSet = new HashSet<>();
 
-            if (numbers == null) {
+        while (asyncDataHolder.getIsRegistrationInProgress().get()) {
+            List<Integer> numbers =
+                    restTemplate.exchange(registrationServiceAddress + "/getNumbers", HttpMethod.GET, null,
+                            new ParameterizedTypeReference<List<Integer>>() {
+                            }).getBody();
+
+            if (numbers == null || numbers.isEmpty()) {
                 continue;
             }
 
-            log.info("Registered: " + Arrays.toString(numbers));
+            numbers.removeAll(numbersSet);
+
+            log.info("Registered: " + numbers);
 
             for (Integer number : numbers) {
-                restTemplate.getForObject(lbNodeUrl + "/add/" + number, String.class);
+                try {
+                    restTemplate.getForObject(lbNodeUrl + "/add/" + number, String.class);
+                } catch (Exception e) {
+                    //ignored
+                }
             }
+
+            numbersSet.addAll(numbers);
 
             try {
                 Thread.sleep(5000);

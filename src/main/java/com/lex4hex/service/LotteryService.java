@@ -105,6 +105,9 @@ public class LotteryService {
         }
 
         return exchange != null && exchange.getStatusCode() == HttpStatus.OK;
+    }
 
+    public Integer getWinner() {
+        return restTemplate.exchange(lbNodeUrl + "/winner", HttpMethod.GET, null, Integer.class).getBody();
     }
 }
