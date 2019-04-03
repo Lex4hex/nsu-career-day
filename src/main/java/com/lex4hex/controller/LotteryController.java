@@ -31,7 +31,7 @@ public class LotteryController {
     }
 
     @GetMapping("/winner")
-    public Integer getWinner() {
+    public String getWinner() {
         return lotteryService.getWinner();
     }
 

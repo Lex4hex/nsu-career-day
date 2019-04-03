@@ -4,6 +4,7 @@ import com.lex4hex.dto.AsyncDataHolder;
 import com.lex4hex.dto.NodeNumber;
 import com.lex4hex.dto.NodeStatusDto;
 import com.lex4hex.dto.NumbersDto;
+import com.lex4hex.dto.WinnerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Objects;
 
 @Service
 public class LotteryService {
@@ -107,7 +110,9 @@ public class LotteryService {
         return exchange != null && exchange.getStatusCode() == HttpStatus.OK;
     }
 
-    public Integer getWinner() {
-        return restTemplate.exchange(lbNodeUrl + "/winner", HttpMethod.GET, null, Integer.class).getBody();
+    public String getWinner() {
+        return Objects.requireNonNull(
+                restTemplate.exchange(lbNodeUrl + "/winner", HttpMethod.GET, null, WinnerDto.class).getBody())
+                .getHash();
     }
 }
